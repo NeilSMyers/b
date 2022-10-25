@@ -1,16 +1,12 @@
-import { View, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 
 import Screen from "../components/Screen";
-import Inset from "../components/Inset";
-import Row from "../components/Row";
-import Text from "../components/Text";
-import Spacer from "../components/Spacer";
 import Button from "../components/Button";
 
 import useTheme from "../hooks/useTheme";
 import useGlob from "../hooks/useGlob";
 
-const Profile = () => {
+const Profile = ({navigation}:any) => {
   const { colors } = useTheme();
 
   const { dispatch } = useGlob();
@@ -19,10 +15,14 @@ const Profile = () => {
     <Screen>
       <ScrollView>
         <Button
-          title="Change name to Bitch"
+          title="Change name"
           onPress={() =>
             dispatch({ type: "updateUser", payload: { name: "Bitch" } })
           }
+        />
+        <Button
+          title="Crazy On Top Screen"
+          onPress={() => navigation.navigate('OnTopYo')}
         />
       </ScrollView>
     </Screen>
