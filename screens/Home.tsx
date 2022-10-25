@@ -1,35 +1,32 @@
-import { View, ScrollView } from "react-native"
+import { View, ScrollView } from "react-native";
 
-import Screen from "../components/Screen"
-import Inset from "../components/Inset"
-import Row from "../components/Row"
-import Text from "../components/Text"
-import Spacer from "../components/Spacer"
+import Screen from "../components/Screen";
+import Inset from "../components/Inset";
+import Row from "../components/Row";
+import Text from "../components/Text";
+import Spacer from "../components/Spacer";
 
-import useTheme from "../hooks/useTheme"
-import useGlob from "../hooks/useGlob"
+import useTheme from "../hooks/useTheme";
+import useGlob from "../hooks/useGlob";
 
 const Home = () => {
-  const { colors } = useTheme()
+  const { colors } = useTheme();
 
-  const { state } = useGlob()
+  const { state } = useGlob();
 
   return (
     <Screen>
       <ScrollView>
-        <Inset
-          background={colors.backgroundThree}
-          style={{ borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}
-        >
+        <Inset background={colors.backgroundTwo}>
           <Text color={colors.textTwo} size="l" bold>
             Welcome to Breeze Airways
           </Text>
-          <Text color={colors.secondary} size="l" bold>
-            Neil Myers!
+          <Text color={colors.main} size="l" bold>
+            {state.user.name}!
           </Text>
           <Spacer />
           <Row space="between">
-            <Text color={colors.secondary} size="xs" bold>
+            <Text color={colors.main} size="xs" bold>
               BREEZEPOINTS AVAILABLE
             </Text>
             <Text color={colors.textTwo} size="xl">
@@ -51,12 +48,11 @@ const Home = () => {
           </Text>
           <Spacer size="xl" />
         </Inset>
+        <Spacer />
         <View
           style={{
-            marginVertical: 20,
             padding: 20,
-            borderRadius: 20,
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.main,
           }}
         >
           <Text color={colors.textTwo} size="xs" bold>
@@ -101,6 +97,7 @@ const Home = () => {
           </Text>
           <Spacer size="m" />
         </View>
+        <Spacer />
         <Text size="xs" bold style={{ textAlign: "center" }}>
           BREEZE DOES IT BETTER
         </Text>
@@ -115,9 +112,10 @@ const Home = () => {
           Our point-to-point network means no connections for an easier, quicer
           and nicer journey.
         </Text>
+        <Spacer />
       </ScrollView>
     </Screen>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

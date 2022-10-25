@@ -1,27 +1,25 @@
-import { createStackNavigator } from "@react-navigation/stack"
+import { createStackNavigator } from "@react-navigation/stack";
 
-import Profile from "../screens/Profile"
+import Profile from "../screens/Profile";
 
-import useTheme from "../hooks/useTheme"
+import useTheme from "../hooks/useTheme";
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 const ProfileStack = () => {
-  const { colors } = useTheme()
+  const { colors } = useTheme();
 
   return (
     <Stack.Navigator
       screenOptions={{
         headerShadowVisible: false,
         headerStyle: { backgroundColor: colors.backgroundTwo },
-        headerTitleStyle: { color: colors.textTwo },
-        headerTitleAlign: "left",
-        title: "",
+        headerTitleStyle: { color: colors.textTwo, fontFamily: "reg" },
       }}
     >
       <Stack.Screen name="Profile" component={Profile} />
     </Stack.Navigator>
-  )
-}
+  );
+};
 
-export default ProfileStack
+export default ProfileStack;

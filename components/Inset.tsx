@@ -1,17 +1,17 @@
-import { View } from "react-native"
+import { View } from "react-native";
 
 type Props = {
-  v?: number
-  h?: number
-  background?: string
-  children: any
-  style: any
-}
+  v?: number;
+  h?: number;
+  background?: string;
+  children: any;
+  style?: any;
+};
 
 const Inset: React.FC<Props> = ({
   v = 20,
   h = 20,
-  background = "white",
+  background,
   children,
   style,
 }) => {
@@ -21,14 +21,14 @@ const Inset: React.FC<Props> = ({
         {
           paddingVertical: v,
           paddingHorizontal: h,
-          backgroundColor: background,
+          backgroundColor: background || "transparent",
         },
         style,
       ]}
     >
       {children}
     </View>
-  )
-}
+  );
+};
 
-export default Inset
+export default Inset;

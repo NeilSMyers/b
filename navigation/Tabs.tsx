@@ -1,33 +1,42 @@
-import { Image, View } from "react-native"
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import Ionicons from "@expo/vector-icons/Ionicons"
+import { Image } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
-import HomeStack from "./HomeStack"
-import BookStack from "./BookStack"
-import ProfileStack from "./ProfileStack"
+import HomeStack from "./HomeStack";
+import BookStack from "./BookStack";
+import ProfileStack from "./ProfileStack";
 
-import useTheme from "../hooks/useTheme"
+import useTheme from "../hooks/useTheme";
 
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
-  const { colors } = useTheme()
+  const { colors } = useTheme();
 
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: { borderTopWidth: 0, margin: 5 },
-        tabBarActiveTintColor: colors.main,
-        tabBarLabelStyle: { fontSize: 14 },
+        tabBarStyle: {
+          borderTopWidth: 0,
+          backgroundColor: colors.secondary,
+        },
+        tabBarActiveTintColor: colors.background,
+        tabBarInactiveTintColor: colors.main,
+        tabBarLabelStyle: { fontSize: 14, fontFamily: "reg" },
       }}
     >
       <Tab.Screen
         name="HomeStack"
         options={{
-          tabBarLabel: "Home",
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="ios-home" size={27} color={color} />
+          tabBarLabel: "Travel",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "ios-airplane" : "ios-airplane-outline"}
+              size={27}
+              color={color}
+              style={{ transform: [{ rotate: "-45deg" }], left: 2 }}
+            />
           ),
         }}
         component={HomeStack}
@@ -36,19 +45,12 @@ const Tabs = () => {
         name="BookStack"
         options={{
           tabBarLabel: "Book",
-          tabBarLabelStyle: { color: "white", fontSize: 14 },
-          tabBarIcon: ({ color }) => (
-            <View
-              style={{
-                borderRadius: 100,
-                backgroundColor: colors.main,
-                padding: 20,
-                position: "absolute",
-                transform: [],
-              }}
-            >
-              <Ionicons name="ios-airplane" size={30} color={"white"} />
-            </View>
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "barcode" : "barcode-outline"}
+              size={27}
+              color={color}
+            />
           ),
         }}
         component={BookStack}
@@ -61,8 +63,8 @@ const Tabs = () => {
             <Image
               source={require("../assets/prof.jpg")}
               style={{
-                height: 30,
-                width: 30,
+                height: 27,
+                width: 27,
                 borderRadius: 20,
                 borderWidth: 2,
                 borderColor: color,
@@ -73,7 +75,7 @@ const Tabs = () => {
         component={ProfileStack}
       />
     </Tab.Navigator>
-  )
-}
+  );
+};
 
-export default Tabs
+export default Tabs;

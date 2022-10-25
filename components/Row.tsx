@@ -1,10 +1,10 @@
-import { View } from "react-native"
+import { View } from "react-native";
 
 type Props = {
-  space?: "between" | "around" | "evenly"
-  children: any
-  style?: any
-}
+  space?: "between" | "around" | "evenly";
+  children: any;
+  style?: any;
+};
 
 const Row: React.FC<Props> = ({ space, children, style }) => {
   return (
@@ -12,7 +12,7 @@ const Row: React.FC<Props> = ({ space, children, style }) => {
       style={[
         {
           flexDirection: "row",
-          justifyContent: `space-${space}` || undefined,
+          justifyContent: `space-${space}` || "flex-start",
           alignItems: "center",
         },
         style,
@@ -20,7 +20,7 @@ const Row: React.FC<Props> = ({ space, children, style }) => {
     >
       {children}
     </View>
-  )
-}
+  );
+};
 
-export default Row
+export default Row;

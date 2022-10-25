@@ -1,23 +1,23 @@
-import Touch from "./Touch"
-import Text from "./Text"
+import Touch from "./Touch";
+import Text from "./Text";
 
-import useTheme from "../hooks/useTheme"
+import useTheme from "../hooks/useTheme";
 
 interface Props {
-  title: string
-  onPress: () => void
-  type?: "default" | "outlined" | "text"
+  title: string;
+  onPress: () => void;
+  type?: "default" | "outlined" | "text";
 }
 
 const Button: React.FC<Props> = ({ title, onPress, type = "default" }) => {
-  const { colors } = useTheme()
+  const { colors } = useTheme();
 
   const types = {
     //
     default: {
       background: {
         backgroundColor: colors.backgroundThree,
-        borderColor: colors.backgroundThree,
+        borderColor: "transparent",
       },
       text: {
         color: colors.textTwo,
@@ -47,7 +47,7 @@ const Button: React.FC<Props> = ({ title, onPress, type = "default" }) => {
         fontWeight: "normal",
       },
     },
-  }
+  };
 
   return (
     <Touch
@@ -58,7 +58,7 @@ const Button: React.FC<Props> = ({ title, onPress, type = "default" }) => {
           padding: 10,
           borderWidth: 2,
           borderRadius: 10,
-          marginHorizontal: 15,
+          marginHorizontal: 20,
           marginVertical: 10,
           justifyContent: "center",
           alignItems: "center",
@@ -68,7 +68,7 @@ const Button: React.FC<Props> = ({ title, onPress, type = "default" }) => {
     >
       <Text style={types[type].text}>{title}</Text>
     </Touch>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;
