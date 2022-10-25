@@ -29,6 +29,7 @@ const DrawerNav = () => {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="App" component={AppNav} options={{headerShown: false}} />
+      <Drawer.Screen name="Top" component={OnTop}/>
     </Drawer.Navigator> 
   )
 }

@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { useFonts, loadAsync } from "expo-font";
+import { useFonts } from "expo-font";
 
 import type { StatusBarStyle } from "expo-status-bar";
 
