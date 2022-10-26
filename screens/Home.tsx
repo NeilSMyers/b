@@ -30,7 +30,7 @@ const Home = () => {
               BREEZEPOINTS AVAILABLE
             </Text>
             <Text color={colors.textTwo} size="xl">
-              ${state.counter}.00
+              $0.00
             </Text>
           </Row>
           <Spacer size="xl" />

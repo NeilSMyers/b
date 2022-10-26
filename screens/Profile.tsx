@@ -6,7 +6,7 @@ import Button from "../components/Button";
 import useTheme from "../hooks/useTheme";
 import useGlob from "../hooks/useGlob";
 
-const Profile = ({navigation}:any) => {
+const Profile = () => {
   const { colors } = useTheme();
 
   const { dispatch } = useGlob();
@@ -19,10 +19,6 @@ const Profile = ({navigation}:any) => {
           onPress={() =>
             dispatch({ type: "updateUser", payload: { name: "Bitch" } })
           }
-        />
-        <Button
-          title="Crazy On Top Screen"
-          onPress={() => navigation.navigate('OnTopYo')}
         />
       </ScrollView>
     </Screen>

@@ -3,19 +3,16 @@ import { createContext, useReducer } from "react";
 const initialState: any = {
   user: {
     id: 1,
-    name: "Neil Myers",
-    address: "69 Fuck You Dr",
+    name: "",
+    address: "",
   },
   settings: {},
-  counter: 0,
 };
 
 export const StateContext = createContext(initialState);
 
 const reducer = (state: any, action: { type: string; payload?: any }) => {
   switch (action.type) {
-    case "increment":
-      return { ...state, counter: state.counter + action.payload };
     case "updateUser":
       return { ...state, user: { ...state.user, ...action.payload } };
     default:
@@ -27,8 +24,6 @@ const reducer = (state: any, action: { type: string; payload?: any }) => {
 
 const StateProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  console.log(state);
 
   return (
     <StateContext.Provider value={{ state, dispatch }}>

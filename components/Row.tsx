@@ -14,6 +14,7 @@ const Row: React.FC<Props> = ({ space, children, style }) => {
           flexDirection: "row",
           justifyContent: `space-${space}` || "flex-start",
           alignItems: "center",
+          flex: 1,
         },
         style,
       ]}

@@ -10,8 +10,7 @@ const Poof = ({ children }: any) => {
       style={{
         backgroundColor: colors.background,
         borderRadius: 10,
-        paddingHorizontal: 10,
-        paddingVertical: 15,
+        padding: 15,
         marginHorizontal: 20,
         marginVertical: 5,
       }}

@@ -15,6 +15,14 @@ import Touch from "../components/Touch";
 import useTheme from "../hooks/useTheme";
 import useGlob from "../hooks/useGlob";
 
+const airports = [
+  "Provo (PVU)",
+  "Salt Lake City (SLC)",
+  "Las Vegas (LAS)",
+  "New York City (JFK)",
+  "Los Angeles (LAX)",
+];
+
 const SelectModal = ({ vis, close, ...props }: any): any => {
   return (
     <Modal
@@ -81,131 +89,93 @@ const Home = () => {
           </Text>
         </Inset>
         <Spacer size="m" />
-        <Poof>
-          <Row>
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <View
-                style={{
-                  width: StyleSheet.hairlineWidth,
-                  backgroundColor: colors.main,
-                }}
-              />
 
-              <View
-                style={{
-                  width: StyleSheet.hairlineWidth,
-                  backgroundColor: colors.main,
-                }}
-              />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Touch onPress={() => setFromSelect(true)}>
-                <Row>
-                  <Bubble />
-                  <Text size="l" color={colors.main} bold style={{ flex: 0.4 }}>
-                    From
-                  </Text>
-                  <View style={{ flex: 1 }}>
-                    <Text size="l" bold>
-                      {from}
-                    </Text>
-                    <Spacer size="xs" />
-                    <Text color={colors.main}>Origin</Text>
-                  </View>
-                </Row>
+        <Poof>
+          <Row space="between">
+            <Row style={{ flex: 0.4 }}>
+              <Bubble />
+              <Text size="l" color={colors.main} bold>
+                From
+              </Text>
+            </Row>
+            <Row space="between">
+              <Touch onPress={() => setFromSelect(true)} style={{ flex: 1 }}>
+                <Text size="l" bold>
+                  {from}
+                </Text>
+                <Text color={colors.main}>Origin</Text>
               </Touch>
-              <Spacer />
-              <Row>
-                <Ionicons
-                  name="airplane-sharp"
-                  size={20}
-                  color={colors.main}
-                  style={{ transform: [{ rotate: "90deg" }] }}
-                />
-                <Spacer />
-                <View
-                  style={{
-                    height: StyleSheet.hairlineWidth,
-                    flex: 1,
-                    backgroundColor: colors.main,
-                  }}
-                />
-              </Row>
-              <Spacer />
-              <Touch onPress={() => setToSelect(true)}>
-                <Row>
-                  <Bubble />
-                  <Text size="l" color={colors.main} bold style={{ flex: 0.4 }}>
-                    To
-                  </Text>
-                  <View style={{ flex: 1 }}>
-                    <Text size="l" bold>
-                      {to}
-                    </Text>
-                    <Spacer size="xs" />
-                    <Text color={colors.main}>Destination</Text>
-                  </View>
-                </Row>
-              </Touch>
-            </View>
-            <View
-              style={{
-                alignItems: "center",
-                marginLeft: 10,
-                justifyContent: "space-between",
-                height: 120,
-              }}
-            >
               <Ionicons
                 name="close-circle-outline"
-                color={colors.main}
-                size={30}
-                backgroundColor="transparent"
-                onPress={() => setFrom("Select")}
-              />
-              <Ionicons
-                name="swap-vertical-outline"
                 color={colors.main}
                 size={25}
                 backgroundColor="transparent"
-                onPress={() => {
-                  setFrom(to);
-                  setTo(from);
-                }}
+                onPress={() => setFrom("Select")}
               />
+            </Row>
+          </Row>
+
+          <Spacer />
+
+          <Row>
+            <Ionicons
+              name="airplane-sharp"
+              size={20}
+              color={colors.main}
+              style={{ transform: [{ rotate: "90deg" }] }}
+            />
+            <Spacer />
+            <View
+              style={{
+                height: StyleSheet.hairlineWidth,
+                flex: 1,
+                backgroundColor: colors.main,
+              }}
+            />
+            <Spacer />
+            <Ionicons
+              name="swap-vertical-outline"
+              color={colors.main}
+              size={25}
+              backgroundColor="transparent"
+              onPress={() => {
+                setFrom(to);
+                setTo(from);
+              }}
+            />
+          </Row>
+
+          <Spacer />
+
+          <Row>
+            <Row style={{ flex: 0.4 }}>
+              <Bubble />
+              <Text size="l" color={colors.main} bold>
+                To
+              </Text>
+            </Row>
+            <Row space="between">
+              <Touch onPress={() => setToSelect(true)} style={{ flex: 1 }}>
+                <Text size="l" bold>
+                  {to}
+                </Text>
+                <Text color={colors.main}>Destination</Text>
+              </Touch>
               <Ionicons
                 name="close-circle-outline"
                 color={colors.main}
-                size={30}
+                size={25}
                 backgroundColor="transparent"
                 onPress={() => setTo("Select")}
               />
-            </View>
+            </Row>
           </Row>
         </Poof>
-        <Button
-          title="UP"
-          onPress={() => dispatch({ type: "increment", payload: 1 })}
-        />
-        <Button
-          title="DOWN"
-          onPress={() => dispatch({ type: "increment", payload: -1 })}
-        />
+        <Button title="Search" onPress={() => {}} />
       </ScrollView>
 
       <SelectModal vis={fromSelect} close={() => setFromSelect(false)}>
-        {[
-          "Provo",
-          "Salt Lake City",
-          "Las Vegas",
-          "New York City",
-          "Los Angeles",
-        ].map((city) => (
+        {airports.map((city) => (
           <Touch
             onPress={() => {
               setFrom(city);
@@ -218,13 +188,7 @@ const Home = () => {
         ))}
       </SelectModal>
       <SelectModal vis={toSelect} close={() => setToSelect(false)}>
-        {[
-          "Provo",
-          "Salt Lake City",
-          "Las Vegas",
-          "New York City",
-          "Los Angeles",
-        ].map((city) => (
+        {airports.map((city) => (
           <Touch
             onPress={() => {
               setTo(city);
